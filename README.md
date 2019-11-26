@@ -5,7 +5,7 @@ This shell script is for PostgreSQL Standby as Replication DB to be promoted to 
 
 It is health-checking Master DB with curl and deleting WAL Files that you are saving for back-up if Master DB is alive and your storage is up to specific number percentage.
 
-and you should edit crontab in your linux, and user must be postgres.
+and you should edit crontab in your linux, and user **MUST** be **postgres**.
 ex) crontab -u postgres -e
 
 #every minute, your script will run.
