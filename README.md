@@ -9,4 +9,5 @@ and you should edit crontab in your linux, and user must be postgres.
 ex) crontab -u postgres -e
 
 #every minute, your script will run.
-* * * * * /your/script/path/
+
+&ast; &ast; &ast; &ast; &ast; /your/script/path/
