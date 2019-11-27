@@ -9,12 +9,13 @@ then
   echo "$MASTER_PRIVATE_IP is up"
   df -k | grep /dev/sda2 > dfk.result
   archive_filesystem=`awk  -F" " '{ print $6 }' dfk.result`
-  archive_capacity=`awk  -F" " '{ print $5 }' dfk.result`
-  echo "Filesystem $archive_filesystem is $archive_capacity filled"
+  archive_capacity=`awk  -F" " '{ print $5 }' $TEMP_DIR/dfk.result | sed -e "s/%//g"`
 
-  if [[ $archive_capacity > 16% ]]
+  echo "Filesystem $archive_filesystem is $archive_capacity% filled"
+
+  if [ $archive_capacity -gt 60 ]
   then
-    echo "FileSystem ${archive_filesystem} is ${archive_capacity}. Limit is 16%"
+    echo "FileSystem ${archive_filesystem} is ${archive_capacity}%. Limit is 60%"
     rm -rf $ARCHIVE_DIR
     df -k | grep /dev/sda2 > dfk.result2
     cleaned_archive_filesystem=`awk  -F" " '{ print $6 }' dfk.result2`
