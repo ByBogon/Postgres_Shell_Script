@@ -11,3 +11,9 @@ ex) crontab -u postgres -e
 #every minute, your script will run.
 
 &ast; &ast; &ast; &ast; &ast; /your/script/path/
+
+you can see the result of crontab in /var/spool/mail/root 
+
+ex) vim /var/spool/mail/root
+
+If you want to apply your updated script for crontab, "systemctl restart crond" will help you out.
