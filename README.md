@@ -16,4 +16,4 @@ you can see the result of crontab in /var/spool/mail/root
 
 ex) vim /var/spool/mail/root
 
-If you want to apply your updated script for crontab, "systemctl restart crond" will help you out.
+If you want to apply your updated script for crontab, command "systemctl restart crond" will help you out.
