@@ -1,4 +1,4 @@
-MASTER_IP=${Master Server IP}
+MASTER_IP=${Master Server IP:PORT}
 POSTGRES_DIR=/home/postgres/9.6
 # Absolute path with * where WAL file is saving, ex)/home/postgres/9.6/archive/*
 ARCHIVE_DIR=$POSTSGRES_DIR/archive/* 
