@@ -1,9 +1,7 @@
 MASTER_IP=${Master Server IP}
-USERNAME=${Username for db connection}
-PWD=${Password for db connection}
-ARCHIVE_DIR=${Absolute path with * where WAL file is saving, ex)/home/postgres/9.6/archive/*}
 POSTGRES_DIR=/home/postgres/9.6
-ARCHIVE_DIR=$POSTSGRES_DIR/archive/*
+# Absolute path with * where WAL file is saving, ex)/home/postgres/9.6/archive/*
+ARCHIVE_DIR=$POSTSGRES_DIR/archive/* 
 RECOVERY_CONF_DIR=$POSTGRES_DIR/data/recovery.conf
 TEMP_DIR=$POSTGRES_DIR/tmp
 curl -sSf $MASTER_IP > /dev/null 2>&1
