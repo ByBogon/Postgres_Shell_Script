@@ -1,4 +1,4 @@
-MASTER_PRIVATE_IP=${Master Server IP}
+MASTER_IP=${Master Server IP}
 USERNAME=${Username for db connection}
 PWD=${Password for db connection}
 ARCHIVE_DIR=${Absolute path with * where WAL file is saving, ex)/home/postgres/9.6/archive/*}
@@ -6,13 +6,13 @@ POSTGRES_DIR=/home/postgres/9.6
 ARCHIVE_DIR=$POSTSGRES_DIR/archive/*
 RECOVERY_CONF_DIR=$POSTGRES_DIR/data/recovery.conf
 TEMP_DIR=$POSTGRES_DIR/tmp
-curl -sSf $MASTER_PRIVATE_IP > /dev/null 2>&1
+curl -sSf $MASTER_IP > /dev/null 2>&1
 RESULT=$?
 #curl: (52) Empty reply from server
 #curl: (7) Failed connect to x.x.x.x:x; Connection refused
 if [ $RESULT -eq 52 ] || [ $RESULT -eq 0 ]
 then
-  echo "$MASTER_PRIVATE_IP is up"
+  echo "$MASTER_IP is up"
   df -k | grep /dev/sda2 > $TEMP_DIR/dfk.result
   archive_filesystem=`awk  -F" " '{ print $6 }' $TEMP_DIR/dfk.result`
   archive_capacity=`awk  -F" " '{ print $5 }' $TEMP_DIR/dfk.result | sed -e "s/%//g"`
@@ -29,12 +29,12 @@ then
     echo "Filesystem $cleaned_archive_filesystem is $cleaned_archive_capacity filled"
   fi
 else
-  echo "$RESULT is current code from $MASTER_PRIVATE_IP"
+  echo "$RESULT is current code from $MASTER_IP"
   echo "CURL LOOP START"
   for i in {1..10}
   do
     echo "Welcome $i times"
-    curl -sSf $MASTER_PRIVATE_IP > /dev/null 2>&1
+    curl -sSf $MASTER_IP > /dev/null 2>&1
     LOOP_CURL=$?
     echo "$LOOP_CURL"
     if [ $LOOP_CURL -ne 52  ] && [ $RESULT -ne 0 ]
