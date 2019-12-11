@@ -1,5 +1,5 @@
 # Postgres_Shell_Script
-*Centos7.7*
+*Centos7.7 / PostgreSQL 9.6*
 
 Shell Script for PostgreSQL to promote Replication DB to Master DB when Master DB shut down.
 
