@@ -1,5 +1,6 @@
 # Postgres_Shell_Script
-Shell Script for PostgreSQL to promote Replication DB to Master DB when Master DB shut down
+*Centos7.7*
+Shell Script for PostgreSQL to promote Replication DB to Master DB when Master DB shut down.
 
 This shell script is for PostgreSQL Standby as Replication DB to be promoted to Master DB When you set them as Streaming replication not Log-Shipping.
 
