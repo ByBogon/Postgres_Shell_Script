@@ -1,7 +1,7 @@
 MASTER_IP=${Master Server IP:PORT}
 POSTGRES_DIR=/home/postgres/9.6
 # Absolute path with * where WAL file is saving, ex)/home/postgres/9.6/archive/*
-ARCHIVE_DIR=$POSTSGRES_DIR/archive/* 
+ARCHIVE_DIR=$POSTGRES_DIR/archive/* 
 RECOVERY_CONF_DIR=$POSTGRES_DIR/data/recovery.conf
 TEMP_DIR=$POSTGRES_DIR/tmp
 curl -sSf $MASTER_IP > /dev/null 2>&1
@@ -17,7 +17,7 @@ then
 
   echo "Filesystem $archive_filesystem is $archive_capacity% filled"
 
-  if [ $archive_capacity -gt 60 ]
+  if [ $archive_capacity -ge 60 ]
   then
     echo "FileSystem ${archive_filesystem} is ${archive_capacity}%. Limit is 60%"
     rm -rf $ARCHIVE_DIR
