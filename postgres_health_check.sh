@@ -20,7 +20,7 @@ then
   if [ $archive_capacity -ge 60 ]
   then
     echo "FileSystem ${archive_filesystem} is ${archive_capacity}%. Limit is 60%"
-    rm -rf $ARCHIVE_DIR
+    find $ARCHIVE_DIR -name '*' -exec rm {} \;
     df -k | grep /dev/sda2 > $TEMP_DIR/dfk.result2
     cleaned_archive_filesystem=`awk  -F" " '{ print $6 }' $TEMP_DIR/dfk.result2`
     cleaned_archive_capacity=`awk  -F" " '{ print $5 }' $TEMP_DIR/dfk.result2`
